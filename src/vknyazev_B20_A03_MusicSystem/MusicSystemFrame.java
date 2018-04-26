@@ -10,6 +10,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JTextArea;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -17,7 +19,8 @@ public class MusicSystemFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextArea textArea;
-
+	private MusicSystem ms;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -123,11 +126,17 @@ public class MusicSystemFrame extends JFrame {
 	}
 	
 	private void menu_search_title() {
+		String songTitle = JOptionPane.showInputDialog(this, "Enter song name:");
 		
+		// Kill if nothing entered
+		if (songTitle == null || songTitle == "")
+			return;
+
+		// TODO: Add search
 	}
 	
 	private void menu_file_exit() {
-		
+		System.exit(0);
 	}
 	
 	private void menu_file_write() {
