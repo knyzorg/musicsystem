@@ -1,6 +1,7 @@
 /**
  * Song
  */
+package vknyazev_B20_A03_MusicSystem;
 public class Song {
     private int year;
     private int ranking;

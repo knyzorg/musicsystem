@@ -111,6 +111,14 @@ public class MusicSystemFrame extends JFrame {
 		textArea = new JTextArea();
 		textArea.setEditable(false);
 		contentPane.add(textArea, BorderLayout.CENTER);
+
+		try {
+			ms = new MusicSystem();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "Could not read data file", "Error", 0);
+			System.exit(1);
+		}
+		
 	}
 	
 	private void menu_reports_year() {
