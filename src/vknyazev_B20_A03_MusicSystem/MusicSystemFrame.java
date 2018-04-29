@@ -137,6 +137,10 @@ public class MusicSystemFrame extends JFrame {
 				"# Downloads",  new String(new char[90]).replace('\0', '-'));
 	}
 
+	private String formatSongAsTableString(Song song) {
+		return String.format("%20s\n%20s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n", "Song Details", "-----------", "Year:", song.getYear(), "Ranking:", song.getRanking(), "Artist:", song.getArtist(), "Song Title:", song.getTitle(), "# Downloads:", song.getDownloadCount());
+	}
+
 	private void menu_reports_year() {
 		String yearString = JOptionPane.showInputDialog(this, "Enter song name:");
 		if (yearString == null)
@@ -216,10 +220,6 @@ public class MusicSystemFrame extends JFrame {
 		textArea.setCaretPosition(0);
 	}
 
-	private String formatSongAsTableString(Song song) {
-		return String.format("%20s\n%20s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n", "Song Details", "-----------", "Year:", song.getYear(), "Ranking:", song.getRanking(), "Artist:", song.getArtist(), "Song Title:", song.getTitle(), "# Downloads:", song.getDownloadCount());
-	}
-
 	private void menu_search_title() {
 		String songTitle = JOptionPane.showInputDialog(this, "Enter song name:");
 
@@ -250,10 +250,6 @@ public class MusicSystemFrame extends JFrame {
 			JOptionPane.showMessageDialog(this, "Failed to write to disk.", "Error", 0);
 
 		}
-
-	}
-
-	private void listSongsByYear() {
 
 	}
 }

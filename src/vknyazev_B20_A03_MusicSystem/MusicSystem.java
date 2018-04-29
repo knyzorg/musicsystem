@@ -10,9 +10,9 @@ import java.io.*;
 public class MusicSystem {
 
     private ArrayList<Song> songs = new ArrayList<Song>();
-    private File sf = new File("music.txt");
 
     public MusicSystem() throws IOException, FileNotFoundException {
+        File sf = new File("music.txt");
         Scanner sc = new Scanner(sf);
         sc.useDelimiter("\\*|\n");
         while (sc.hasNext()) {
