@@ -142,7 +142,7 @@ public class MusicSystemFrame extends JFrame {
 	}
 
 	private void menu_reports_year() {
-		String yearString = JOptionPane.showInputDialog(this, "Enter song name:");
+		String yearString = JOptionPane.showInputDialog(this, "Enter year:");
 		if (yearString == null)
 			return;
 			
