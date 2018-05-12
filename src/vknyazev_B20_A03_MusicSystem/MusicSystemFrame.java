@@ -149,8 +149,6 @@ public class MusicSystemFrame extends JFrame {
 		
 		try {
 			int year = Integer.parseInt(yearString);
-			ms.sortByRank();
-			ms.sortByYear();
 			textArea.setText("");
 
 			textArea.append(makeTableHeader("Top Songs of " + year));
@@ -164,8 +162,6 @@ public class MusicSystemFrame extends JFrame {
 	}
 
 	private void menuReportsAll() {
-		ms.sortByRank();
-		ms.sortByYear();
 		textArea.setText("");
 
 		textArea.append(makeTableHeader("Top Songs of the Year"));

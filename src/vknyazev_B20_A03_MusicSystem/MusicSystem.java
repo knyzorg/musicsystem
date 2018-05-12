@@ -30,12 +30,13 @@ public class MusicSystem {
             songs.add(song);
         } // while
         sc.close();
+
+        // Presort it all
+        sortByYearAndRank();
+
     } // MusicSystem()
 
     public void writeSorted() throws IOException {
-        sortByRank();
-        sortByYear();
-
         FileWriter fw = new FileWriter(new File("sortedMusic.txt"));
 
         for (Song s : songs)
@@ -62,71 +63,30 @@ public class MusicSystem {
     /**
      * 
      */
-    public void sortByYear() {
+    public void sortByYearAndRank() {
         int n = songs.size();
-        for (int j = 0; j < songs.size(); j++) {
+        boolean sorted = false;
+        for (int j = 0; j < songs.size() && !sorted; j++) {
+            sorted = true;
             for (int i = 1; i < (n - j); i++) {
                 Song song1 = songs.get(i);
                 Song song2 = songs.get(i - 1);
-                if (song1.getYear() < song2.getYear()) {
+                if (song1.getYear() < song2.getYear()
+                        || (song1.getYear() == song2.getYear() && song1.getRanking() < song2.getRanking())) {
                     songs.set(i, song2);
                     songs.set(i - 1, song1);
+                    sorted = false;
                 }
             }
         }
     } // sortByYear()
 
-    public void sortByRank() {
-        int n = songs.size();
-        for (int j = 0; j < songs.size(); j++) {
-            for (int i = 1; i < (n - j); i++) {
-                Song song1 = songs.get(i);
-                Song song2 = songs.get(i - 1);
-                if (song1.getRanking() < song2.getRanking()) {
-                    songs.set(i, song2);
-                    songs.set(i - 1, song1);
-                }
-            }
-        }
-    } // sortByRank()
-
-    public void sortByTitle() {
-        int n = songs.size();
-        for (int j = 0; j < songs.size(); j++) {
-            for (int i = 1; i < (n - j); i++) {
-                Song song1 = songs.get(i);
-                Song song2 = songs.get(i - 1);
-                if (song1.getTitle().compareToIgnoreCase(song2.getTitle()) < 0) {
-                    songs.set(i, song2);
-                    songs.set(i - 1, song1);
-                }
-            }
-        }
-    } // sortByTitle()
-
     public Song findSongByTitle(String title) {
-        // sort songs by title to enable a binary search
-        sortByTitle();
+        for (Song s : songs)
+            if (s.getTitle().equals(title))
+                return s;
+        return null;
 
-        // Binary search
-        int bottom = 0;
-        int top = songs.size() - 1;
-        Song found = null;
-
-        while (bottom <= top && found == null) {
-
-            int middle = (bottom + top) / 2;
-
-            if (songs.get(middle).getTitle().equalsIgnoreCase(title))
-                found = songs.get(middle);
-            else if (songs.get(middle).getTitle().compareToIgnoreCase(title) < 0)
-                bottom = middle + 1;
-            else
-                top = middle - 1;
-
-        }
-
-        return found;
     } // findSongByTitle()
 
     public Song findSongByYearAndRanking(int year, int ranking) {
