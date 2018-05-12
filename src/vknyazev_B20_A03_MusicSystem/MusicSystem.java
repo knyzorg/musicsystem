@@ -14,7 +14,7 @@ public class MusicSystem {
     public MusicSystem() throws IOException, FileNotFoundException {
         File sf = new File("music.txt");
         Scanner sc = new Scanner(sf);
-        sc.useDelimiter("\\*|\r\n");
+        sc.useDelimiter("\\*|\r\n|\n");
         while (sc.hasNext()) {
             int year = sc.nextInt();
             // System.out.println(year);
