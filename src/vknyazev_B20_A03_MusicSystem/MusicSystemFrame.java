@@ -48,7 +48,7 @@ public class MusicSystemFrame extends JFrame {
 		JMenuItem mntmWrite = new JMenuItem("Write");
 		mntmWrite.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				menu_file_write();
+				menuFileWrite();
 			}
 		});
 		mnFile.add(mntmWrite);
@@ -56,7 +56,7 @@ public class MusicSystemFrame extends JFrame {
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				menu_file_exit();
+				menuFileExit();
 			}
 		});
 		mnFile.add(mntmExit);
@@ -67,7 +67,7 @@ public class MusicSystemFrame extends JFrame {
 		JMenuItem mntmBySongTitle = new JMenuItem("By song title");
 		mntmBySongTitle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				menu_search_title();
+				menuSearchTitle();
 			}
 		});
 		mnSearch.add(mntmBySongTitle);
@@ -75,7 +75,7 @@ public class MusicSystemFrame extends JFrame {
 		JMenuItem mntmByYearranking = new JMenuItem("By year/ranking");
 		mntmByYearranking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				menu_search_year_ranking();
+				menuSearchYearRanking();
 			}
 		});
 		mnSearch.add(mntmByYearranking);
@@ -86,7 +86,7 @@ public class MusicSystemFrame extends JFrame {
 		JMenuItem mntmListAllMusic = new JMenuItem("List All Music");
 		mntmListAllMusic.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				menu_reports_all();
+				menuReportsAll();
 			}
 		});
 		mnReports.add(mntmListAllMusic);
@@ -94,7 +94,7 @@ public class MusicSystemFrame extends JFrame {
 		JMenuItem mntmListByYear = new JMenuItem("List by year");
 		mntmListByYear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				menu_reports_year();
+				menuReportsYear();
 			}
 		});
 		mnReports.add(mntmListByYear);
@@ -141,7 +141,7 @@ public class MusicSystemFrame extends JFrame {
 		return String.format("%20s\n%20s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n%-25s %-25s\n", "Song Details", "-----------", "Year:", song.getYear(), "Ranking:", song.getRanking(), "Artist:", song.getArtist(), "Song Title:", song.getTitle(), "# Downloads:", song.getDownloadCount());
 	}
 
-	private void menu_reports_year() {
+	private void menuReportsYear() {
 		String yearString = JOptionPane.showInputDialog(this, "Enter year:");
 		if (yearString == null)
 			return;
@@ -163,7 +163,7 @@ public class MusicSystemFrame extends JFrame {
 		}
 	}
 
-	private void menu_reports_all() {
+	private void menuReportsAll() {
 		ms.sortByRank();
 		ms.sortByYear();
 		textArea.setText("");
@@ -191,7 +191,7 @@ public class MusicSystemFrame extends JFrame {
 		textArea.setCaretPosition(0);
 	}
 
-	private void menu_search_year_ranking() {
+	private void menuSearchYearRanking() {
 		JPanel yearRankingSearchPanel = new JPanel(new GridLayout(2, 2));
 		JTextField fldYear = new JTextField();
 		JTextField fldRanking = new JTextField();
@@ -220,7 +220,7 @@ public class MusicSystemFrame extends JFrame {
 		textArea.setCaretPosition(0);
 	}
 
-	private void menu_search_title() {
+	private void menuSearchTitle() {
 		String songTitle = JOptionPane.showInputDialog(this, "Enter song name:");
 
 		// Kill if nothing entered
@@ -239,11 +239,11 @@ public class MusicSystemFrame extends JFrame {
 		
 	}
 
-	private void menu_file_exit() {
+	private void menuFileExit() {
 		System.exit(0);
 	}
 
-	private void menu_file_write() {
+	private void menuFileWrite() {
 		try {
 			ms.writeSorted();
 		} catch (IOException e) {
